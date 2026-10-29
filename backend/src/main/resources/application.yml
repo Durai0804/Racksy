@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: racksy-warehouse-api
+  profiles:
+    default: demo
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always

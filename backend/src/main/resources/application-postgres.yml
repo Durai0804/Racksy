@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: ${WAREHOUSE_DB_URL:jdbc:postgresql://localhost:5432/racksy}
+    username: ${WAREHOUSE_DB_USER:racksy}
+    password: ${WAREHOUSE_DB_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

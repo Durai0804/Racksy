@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: racksy
+      POSTGRES_PASSWORD: racksy-dev-only
+      POSTGRES_DB: racksy
+    ports:
+      - "5432:5432"
+    volumes:
+      - racksy-postgres:/var/lib/postgresql/data
+      - ./backend/docker/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U racksy -d racksy"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  racksy-postgres:
